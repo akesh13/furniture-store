@@ -8,12 +8,14 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { useScreenSize } from "@/utils/useScreenSize";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 function OfferSection() {
   const offerTextRef = useRef(null);
   const offerBoxRef = useRef(null);
+  const { isMobile } = useScreenSize();
   useGSAP(() => {
     const boxes = gsap.utils.toArray(offerBoxRef.current.children);
     gsap.fromTo(
@@ -29,7 +31,7 @@ function OfferSection() {
         stagger: 0.5,
         scrollTrigger: {
           trigger: offerTextRef.current.children,
-          toggleActions: "restart pause reverse pause",
+          toggleActions: "restart pause pause pause",
         },
       }
     );
@@ -46,7 +48,7 @@ function OfferSection() {
         ease: "back",
         scrollTrigger: {
           trigger: boxes,
-          toggleActions: "restart pause reverse pause",
+          toggleActions: "restart pause pause pause",
         },
         stagger: 0.5,
       }
@@ -57,6 +59,10 @@ function OfferSection() {
       ref={offerBoxRef}
       sx={{
         display: "flex",
+        flexDirection: {
+          xs: "column",
+          md: "row",
+        },
         justifyContent: "space-between",
         alignItems: "flex-start",
         gap: "24px",
@@ -72,23 +78,27 @@ function OfferSection() {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: "18px",
+          padding: "18px 0px 18px 0px",
           borderRadius: "28px",
           gap: "18px",
           backgroundColor: "#f5f5f5",
-          height: "40dvh",
-          width: "35%",
+          height: isMobile ? "30dvh" : "40dvh",
+          width: isMobile ? "100%" : "35%",
         }}
       >
         <Typography
           sx={{
-            fontSize: "48px",
+            fontSize: isMobile ? "38px" : "48px",
             fontWeight: "800",
           }}
         >
           Daily offer
         </Typography>
-        <Typography>
+        <Typography
+          sx={{
+            fontSize: isMobile ? "16px" : "20px",
+          }}
+        >
           Check out our duty that can big csscovito on prcxiucts, may champ
           overy day. do not rniso yocr charwo
         </Typography>
@@ -106,26 +116,13 @@ function OfferSection() {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          padding: "18px",
+          padding: isMobile ? "0px" : "18px 0px",
           borderRadius: "28px",
-          gap: "18px",
+          gap: isMobile ? "10px" : "18px",
           backgroundColor: "#dfe5f3",
           height: "40dvh",
-          width: "40%",
-          // "&:hover": {
-          //   width: "40%",
-          // },
-          // flexGrow: 1,
-          // transition: "0.5s ease-in",
+          width: isMobile ? "100%" : "35%",
           cursor: "pointer",
-          // "&:hover": {
-          //   boxShadow:
-          //     "inset 0px 33px 25px 0px #000, inset 0 66px 15px 0px #ccc, inset 0 99px 5px 0px #fff",
-          // },
-          // background:
-          //   "url('https://res.cloudinary.com/dgcy4qkiz/image/upload/v1722696890/chair-thumb_eqmuik.png')",
-          // backgroundRepeat: "no-repeat",
-          // backgroundSize: "contain",
         }}
       >
         <Box
@@ -134,12 +131,14 @@ function OfferSection() {
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
+            marginTop: isMobile && "15px",
           }}
         >
           <Typography
             sx={{
               fontSize: "32px",
               fontWeight: "800",
+              marginLeft: isMobile && "15px",
             }}
           >
             Chairs
@@ -154,6 +153,7 @@ function OfferSection() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              marginRight: isMobile && "15px",
             }}
           >
             30%
@@ -161,7 +161,12 @@ function OfferSection() {
             OFF
           </Box>
         </Box>
-        <Image alt="chair" src={chair} height={280} width={280} />
+        <Image
+          alt="chair"
+          src={chair}
+          height={isMobile ? 240 : 280}
+          width={isMobile ? 240 : 280}
+        />
       </Box>
       <Box
         sx={{
@@ -169,26 +174,13 @@ function OfferSection() {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
-          padding: "18px",
+          padding: isMobile ? "0px" : "18px",
           borderRadius: "28px",
           gap: "18px",
           backgroundColor: "#fdedd6",
           height: "50dvh",
-          width: "40%",
-          // "&:hover": {
-          //   width: "40%",
-          // },
-          // flexGrow: 1,
-          // transition: "0.5s ease-in",
+          width: isMobile ? "100%" : "35%",
           cursor: "pointer",
-          // "&:hover": {
-          //   boxShadow:
-          //     "inset 0px 33px 25px 0px #000, inset 0 66px 15px 0px #ccc, inset 0 99px 5px 0px #fff",
-          // },
-          // background:
-          //   "url('https://res.cloudinary.com/dgcy4qkiz/image/upload/v1722696890/chair-thumb_eqmuik.png')",
-          // backgroundRepeat: "no-repeat",
-          // backgroundSize: "contain",
         }}
       >
         <Box
@@ -197,12 +189,14 @@ function OfferSection() {
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
+            marginTop: isMobile && "15px",
           }}
         >
           <Typography
             sx={{
               fontSize: "32px",
               fontWeight: "800",
+              marginLeft: isMobile && "15px",
             }}
           >
             Tables
@@ -217,6 +211,7 @@ function OfferSection() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              marginRight: isMobile && "15px",
             }}
           >
             50%
@@ -224,7 +219,12 @@ function OfferSection() {
             OFF
           </Box>
         </Box>
-        <Image alt="chair" src={table} height={280} width={280} />
+        <Image
+          alt="chair"
+          src={table}
+          height={isMobile ? 240 : 280}
+          width={280}
+        />
       </Box>
     </Box>
   );

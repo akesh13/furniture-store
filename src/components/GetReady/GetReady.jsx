@@ -1,50 +1,60 @@
+"use client";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import sofa from "../../../public/assets/images/blue-sofa.jpg";
+import { useScreenSize } from "@/utils/useScreenSize";
 
 function GetReady() {
+  const { isMobile } = useScreenSize();
   return (
     <Box
       sx={{
         display: "flex",
+        flexDirection: {
+          xs: "column",
+          md: "row",
+        },
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop:"48px"
+        marginTop: "48px",
+        overflow: "hidden",
       }}
     >
       <Box
         sx={{
-          width: "40%",
+          width: isMobile ? "100%" : "40%",
         }}
       >
         <Image
           style={{
             borderRadius: "24px",
+            objectFit: "cover",
           }}
           alt="chair"
           src={sofa}
-          height={480}
-          width={480}
+          height={isMobile ? 420 : 480}
+          width={isMobile ? 360 : 480}
         />
       </Box>
       <Box
         sx={{
-          width: "60%",
-          minHeight: "400px",
+          width: isMobile ? "100%" : "60%",
+          // minHeight: isMobile ? "100dvh" : "400px",
+          gap:"18px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "flex-start",
-          padding:"48px 0px"
+          padding: isMobile ? "0px" : "48px 0px",
         }}
       >
         <Typography
           component="h4"
           sx={{
-            fontSize: "48px",
+            fontSize: isMobile ? "38px" : "48px",
             fontWeight: 800,
-            width: "50%",
+            width: isMobile ? "100%" : "50%",
           }}
         >
           Get ready for winter
@@ -53,7 +63,7 @@ function GetReady() {
           variant="body1"
           component="p"
           sx={{
-            fontSize: "24px",
+            fontSize: isMobile ? "18px" : "24px",
             fontWeight: "400",
           }}
         >

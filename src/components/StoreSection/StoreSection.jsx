@@ -1,11 +1,21 @@
 "use client";
-import { Box, Button, Modal, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  Paper,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import { productData } from "./productsData";
 import { HiArrowLongRight } from "react-icons/hi2";
+import { useScreenSize } from "@/utils/useScreenSize";
+import { IoClose } from "react-icons/io5";
 
 function StoreSection() {
+  const { isMobile } = useScreenSize();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -22,7 +32,7 @@ function StoreSection() {
         variant="h4"
         component="h4"
         sx={{
-          fontSize: "48",
+          fontSize: isMobile ? "38px" : "48px",
           fontWeight: 800,
         }}
       >
@@ -34,7 +44,7 @@ function StoreSection() {
         sx={{
           fontSize: "14px",
           fontWeight: 400,
-          width: "20%",
+          width: isMobile ? "90%" : "20%",
         }}
       >
         Introducing our tatost Atfivols - Elevate space Contempatory Elegance!
@@ -42,7 +52,9 @@ function StoreSection() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(25%, 1fr))",
+          gridTemplateColumns: isMobile
+            ? "repeat(auto-fill, minmax(100%, 1fr))"
+            : "repeat(auto-fill, minmax(25%, 1fr))",
           gap: "14px",
           paddingTop: "32px",
           maxHeight: "55vh",
@@ -88,25 +100,32 @@ function StoreSection() {
           display: "grid",
           placeItems: "center",
         }}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
       >
         <Paper
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(25%, 1fr))",
+            gridTemplateColumns: isMobile
+              ? "repeat(auto-fill, minmax(100%, 1fr))"
+              : "repeat(auto-fill, minmax(25%, 1fr))",
             gap: "14px",
             paddingTop: "32px",
             maxHeight: "75dvh",
             overflow: "scroll",
             position: "relative",
             width: "90%",
-            padding: "28px 32px",
+            padding: isMobile ? "18px" : "28px 32px",
             borderRadius: "28px",
-            // display:"flex",
-            // flexWrap:"wrap",
           }}
         >
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              zIndex:1
+            }}
+          >
+            <IoClose />
+          </IconButton>
           {productData &&
             productData?.map((product) => (
               <ProductCard

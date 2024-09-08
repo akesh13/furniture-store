@@ -5,11 +5,13 @@ import { Box, Typography } from "@mui/material";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useScreenSize } from "@/utils/useScreenSize";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 function CategorySection() {
   const containerRef = useRef(null);
+  const { isMobile } = useScreenSize();
   useGSAP(
     () => {
       const boxes = gsap.utils.toArray(containerRef.current.children);
@@ -25,10 +27,10 @@ function CategorySection() {
             x: 0,
             opacity: 1,
             rotation: 360,
-            duration:1,
+            duration: 1,
             scrollTrigger: {
               trigger: box,
-              toggleActions: "restart pause reverse pause",
+              toggleActions: "restart pause pause pause",
               // start: "top 90%",
               // end: "bottom center",
               // scrub: true,
@@ -55,10 +57,14 @@ function CategorySection() {
       ref={containerRef}
       sx={{
         display: "flex",
+        flexWrap: {
+          xs: "wrap",
+          md: "nowrap",
+        },
         justifyContent: "space-between",
         alignItems: "center",
         marginTop: "48px",
-        gap: "32px",
+        gap: isMobile ? "14px" : "32px",
       }}
     >
       {categories.map((category) => (
@@ -67,12 +73,13 @@ function CategorySection() {
             display: "flex",
             flexDirection: "column",
             flexGrow: 1,
-            justifyContent: "space-evenly",
+            justifyContent: isMobile ? "space-between" : "space-evenly",
             alignItems: "center",
-            padding: "38px 18px",
+            padding: isMobile ? "18px 0px" : "38px 18px",
             backgroundColor: "#f5f5f5",
-            borderRadius: "32px",
+            borderRadius: isMobile ? "24px" : "32px",
             cursor: "pointer",
+            width: isMobile && "25%",
             "&:hover": {
               // transition: "0.5s ease-in",
               backgroundColor: "#ffd873",
@@ -82,14 +89,14 @@ function CategorySection() {
         >
           <Typography
             sx={{
-              fontSize: "94px",
+              fontSize: isMobile ? "48px" : "94px",
             }}
           >
             {category.icon}
           </Typography>
           <Typography
             sx={{
-              fontSize: "22px",
+              fontSize: isMobile ? "18px" : "22px",
               fontFamily: "Montserrat",
               fontWeight: 700,
             }}

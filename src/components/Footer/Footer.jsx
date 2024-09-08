@@ -1,8 +1,11 @@
+"use client"
+import { useScreenSize } from "@/utils/useScreenSize";
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { BiChair } from "react-icons/bi";
 
 function Footer() {
+  const {isMobile} = useScreenSize()
   return (
     <Box
       sx={{
@@ -15,6 +18,7 @@ function Footer() {
         justifyContent: "space-between",
         alignItems: "start",
         padding: "28px 18px",
+        gap: isMobile && "18px"
       }}
     >
       <Box
@@ -31,15 +35,15 @@ function Footer() {
             fontSize: "64px",
           }}
         />
-        <Typography>356-A, plesant nagar, nagercoil</Typography>
+        <Typography>356-A, pleasant, bangalore</Typography>
         <Typography>info@furniturestore.com</Typography>
         <Button
           sx={{
             backgroundColor: "black",
             color: "white",
-            "&:hover":{
-                color:"black",
-            }
+            "&:hover": {
+              color: "black",
+            },
           }}
         >
           Contact us
@@ -205,7 +209,10 @@ function Footer() {
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: {
+            xs: "none",
+            md: "flex",
+          },
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "start",

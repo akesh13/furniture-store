@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import chair1 from "../../../public/assets/images/lounge_chair1.png";
 import chair2 from "../../../public/assets/images/lounge_chair_2.png";
+import { useScreenSize } from "@/utils/useScreenSize";
 
 gsap.registerPlugin(useGSAP);
 
@@ -14,6 +15,7 @@ function HeroSection() {
   const sofaRef = useRef(null);
   const chair1Ref = useRef(null);
   const chair2Ref = useRef(null);
+  const { isMobile } = useScreenSize();
 
   useGSAP(
     () => {
@@ -68,7 +70,7 @@ function HeroSection() {
           ease: "bounce",
         }
       );
-    },
+    }
     // {
     //   scope: "container",
     // }
@@ -78,12 +80,12 @@ function HeroSection() {
       <Box
         ref={sofaRef}
         sx={{
-          height: "40dvh",
+          height: isMobile ? "60dvh" : "40dvh",
           width: "100%",
           backgroundColor: "#5c75b8",
           borderRadius: "36px",
-          padding: "24px 0px",
-          marginTop:"14px"
+          padding: isMobile ? "24px 0px" : "24px 0px",
+          marginTop: isMobile ? "0px" : "14px",
         }}
       >
         <Typography
@@ -93,13 +95,13 @@ function HeroSection() {
           sx={{
             textTransform: "capitalize",
             fontSize: {
-              sm:"24px",
-              lg:"84px"
+              sm: "24px",
+              lg: "84px",
             },
             color: "#ffffff",
             fontWeight: 600,
             fontFamily: "Montserrat",
-            lineHeight: "84px",
+            lineHeight: isMobile ? "28px" : "84px",
           }}
         >
           modern minimalist furniture
@@ -107,33 +109,43 @@ function HeroSection() {
         <Box
           sx={{
             display: "flex",
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
             justifyContent: "space-around",
             alignItems: "center",
             gap: "14px",
           }}
         >
-          <Image src={sofa} alt="sofa-image" height={290} width={"auto"} />
+          <Image
+            src={sofa}
+            alt="sofa-image"
+            height={isMobile ? 200 : 290}
+            width={"auto"}
+          />
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
-              alignItems: "start",
+              alignItems: isMobile ? "center" : "start",
               flexGrow: 1,
               gap: "18px",
-              maxWidth: "40%",
+              maxWidth: isMobile ? "100%" : "40%",
             }}
           >
             <Typography
               variant="body1"
               sx={{
-                maxWidth: "75%",
+                maxWidth: isMobile ? "90%" : "75%",
                 color: "white",
+                fontSize: isMobile ? "18px" : "18px",
               }}
             >
               Discover o curated collection ot handcrafted pieces designed to
               tronstoen yout Wing spaces into expressions ot your unique tasto
-              ond lifesty10.
+              ond lifestyle.
             </Typography>
             <Button
               sx={{
@@ -151,24 +163,28 @@ function HeroSection() {
       <Box
         sx={{
           display: "flex",
+          flexWrap: {
+            xs: "wrap",
+            md: "nowrap",
+          },
           justifyContent: "space-between",
           alignItems: "center",
-          gap: "28px",
+          gap: isMobile ? "14px" : "28px",
           marginTop: "14px",
         }}
       >
         <Box
           ref={chair1Ref}
           sx={{
-            minHeight: "35vh",
-            minWidth: "48%",
+            minHeight: isMobile ? "20dvh" : "35vh",
+            width: "100%",
             backgroundColor: "#dfe5f3",
             borderRadius: "32px",
             display: "flex",
             justifyContent: "space-evenly",
             alignItems: "center",
-            padding: "0px 24px",
-            gap: "32px",
+            padding: isMobile ? "18px 14px" : "0px 24px",
+            gap: isMobile ? "0px" : "32px",
             transition: "transform 0.5s ease-in-out",
             "&:hover": {
               transform: "rotate(-1deg)",
@@ -176,7 +192,12 @@ function HeroSection() {
             overflow: "hidden",
           }}
         >
-          <Image src={chair1} alt="sofa-image" height={260} width={"auto"} />
+          <Image
+            src={chair1}
+            alt="sofa-image"
+            height={isMobile ? 140 : 260}
+            width={"auto"}
+          />
           <Box
             sx={{
               display: "flex",
@@ -184,12 +205,12 @@ function HeroSection() {
               alignItems: "flex-start",
               flexDirection: "column",
               flexGrow: 1,
-              gap: "32px",
+              gap: isMobile ? "10px" : "32px",
             }}
           >
             <Typography
               sx={{
-                fontSize: "54px",
+                fontSize: isMobile ? "20px" : "50px",
                 fontWeight: 800,
                 fontFamily: "Montserrat",
               }}
@@ -211,15 +232,15 @@ function HeroSection() {
         <Box
           ref={chair2Ref}
           sx={{
-            minHeight: "35vh",
-            minWidth: "40%",
+            minHeight: isMobile ? "20dvh" : "35vh",
+            width: "100%",
             backgroundColor: "#ffd873",
             borderRadius: "32px",
             display: "flex",
             justifyContent: "space-evenly",
             alignItems: "center",
-            padding: "0px 24px",
-            gap: "32px",
+            padding: isMobile ? "18px 14px" : "0px 24px",
+            gap: isMobile ? "0px" : "32px",
             transition: "transform 0.5s ease-in-out",
             "&:hover": {
               transform: "rotate(1deg)",
@@ -230,17 +251,17 @@ function HeroSection() {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: isMobile ? "space-evenly" : "space-between",
               alignItems: "flex-start",
               flexDirection: "column",
               flexGrow: 1,
-              gap: "32px",
+              gap: isMobile ? "10px" : "32px",
               color: "#876929",
             }}
           >
             <Typography
               sx={{
-                fontSize: "48px",
+                fontSize: isMobile ? "20px" : "54px",
                 fontWeight: 800,
                 fontFamily: "Montserrat",
               }}
@@ -258,7 +279,12 @@ function HeroSection() {
               Explore more
             </Button>
           </Box>
-          <Image src={chair2} alt="sofa-image" height={260} width={"auto"} />
+          <Image
+            src={chair2}
+            alt="sofa-image"
+            height={isMobile ? 140 : 260}
+            width={"auto"}
+          />
         </Box>
       </Box>
     </>

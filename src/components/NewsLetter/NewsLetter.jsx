@@ -4,9 +4,11 @@ import React, { useRef } from "react";
 import { BiEnvelope } from "react-icons/bi";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useScreenSize } from "@/utils/useScreenSize";
 gsap.registerPlugin(useGSAP);
 
 function NewsLetter() {
+  const { isMobile } = useScreenSize();
   useGSAP(() => {
     gsap.fromTo(
       ".mail-icon",
@@ -47,41 +49,48 @@ function NewsLetter() {
         component="h3"
         sx={{
           fontSize: "28px",
-          width: "30%",
+          width: isMobile ? "100%" : "30%",
           textAlign: "center",
         }}
       >
         Subscribe to our newsletter and grab <strong>30% off!</strong>
       </Typography>
       <BiEnvelope
-          className="mail-icon"
-          style={{ fontSize: "28px", color: "blue" }}
-        />
+        className="mail-icon"
+        style={{ fontSize: "28px", color: "blue" }}
+      />
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          width:"60%",
-          gap:"18px"
+          width: isMobile ? "100%" : "60%",
+          gap: "18px",
         }}
       >
-       <input placeholder="Please enter your email" style={{
-        width:"100%",
-        height:"48px",
-        borderRadius:"50px",
-        padding:"0px 24px",
-        fontSize:"18px",
-        fontWeight:"500",
-        fontFamily:"Montserrat"
-       }} />
-        <Button sx={{
-            backgroundColor:"black",
-            color:"white",
-            "&:hover":{
-                backgroundColor:"grey",
-            }
-        }}>Subscribe</Button>
+        <input
+          placeholder="Please enter your email"
+          style={{
+            width: "100%",
+            height: "48px",
+            borderRadius: "50px",
+            padding: "0px 24px",
+            fontSize: "18px",
+            fontWeight: "500",
+            fontFamily: "Montserrat",
+          }}
+        />
+        <Button
+          sx={{
+            backgroundColor: "black",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "grey",
+            },
+          }}
+        >
+          Subscribe
+        </Button>
       </Box>
     </Box>
   );

@@ -1,14 +1,26 @@
 "use client";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Image from "next/image";
 import siteLogo from "../../public/assets/images/armchair.png";
 import { useState } from "react";
 import { GoHeart } from "react-icons/go";
 import { PiShoppingCartSimpleLight, PiUserLight } from "react-icons/pi";
 import { HiBars3 } from "react-icons/hi2";
+import { useScreenSize } from "@/utils/useScreenSize";
 
 export default function NavMenu() {
   const [active, setActive] = useState("");
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const {isMobile} = useScreenSize()
   const menuItems = [
     {
       id: 1,
@@ -38,17 +50,19 @@ export default function NavMenu() {
       alignItems={"center"}
       padding={"14px 0px"}
     >
-      <Grid item display={"flex"} alignItems={"center"} gap={2}>
-        <HiBars3
-          style={{
+      <Grid item display={"flex"} alignItems={"center"} gap={1}>
+        <IconButton
+          sx={{
             fontSize: "28px",
             display: {
-              xs: "block",
+              sx: "block",
               md: "none",
             },
           }}
-        />
-        <Image src={siteLogo} alt="site-log0" height={48} width={52} />
+        >
+          <HiBars3 />
+        </IconButton>
+        <Image src={siteLogo} alt="site-log0" height={isMobile ? 28 : 48} width={isMobile ? 32 : 52} />
         <Typography
           align="left"
           variant="h1"
