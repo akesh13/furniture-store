@@ -5,6 +5,7 @@ import siteLogo from "../../public/assets/images/armchair.png";
 import { useState } from "react";
 import { GoHeart } from "react-icons/go";
 import { PiShoppingCartSimpleLight, PiUserLight } from "react-icons/pi";
+import { HiBars3 } from "react-icons/hi2";
 
 export default function NavMenu() {
   const [active, setActive] = useState("");
@@ -35,16 +36,28 @@ export default function NavMenu() {
       container
       justifyContent={"space-between"}
       alignItems={"center"}
-      padding={"16px 48px"}
+      padding={"14px 0px"}
     >
       <Grid item display={"flex"} alignItems={"center"} gap={2}>
+        <HiBars3
+          style={{
+            fontSize: "28px",
+            display: {
+              xs: "block",
+              md: "none",
+            },
+          }}
+        />
         <Image src={siteLogo} alt="site-log0" height={48} width={52} />
         <Typography
           align="left"
           variant="h1"
           component={"h1"}
           sx={{
-            fontSize: "24px",
+            fontSize: {
+              xs: "18px",
+              lg: "24px",
+            },
             fontWeight: 700,
             textTransform: "capitalize",
             fontFamily: "Montserrat, sans-serif",
@@ -55,13 +68,16 @@ export default function NavMenu() {
       </Grid>
       <Grid
         item
-        display={"flex"}
         alignItems={"center"}
         // gap={2}
         sx={{
           padding: "10px 12px",
           backgroundColor: "#eff2f9",
           borderRadius: "50px",
+          display: {
+            xs: "none",
+            lg: "flex",
+          },
         }}
       >
         {menuItems.map((menu) => (
@@ -95,7 +111,17 @@ export default function NavMenu() {
           </Typography>
         ))}
       </Grid>
-      <Grid item display={"flex"} alignItems={"center"} gap={2}>
+      <Grid
+        item
+        alignItems={"center"}
+        sx={{
+          display: {
+            xs: "none",
+            lg: "flex",
+          },
+        }}
+        gap={2}
+      >
         <Box
           sx={{
             height: "36px",

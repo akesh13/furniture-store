@@ -83,6 +83,7 @@ function HeroSection() {
           backgroundColor: "#5c75b8",
           borderRadius: "36px",
           padding: "24px 0px",
+          marginTop:"14px"
         }}
       >
         <Typography
@@ -91,7 +92,10 @@ function HeroSection() {
           align="center"
           sx={{
             textTransform: "capitalize",
-            fontSize: "84px",
+            fontSize: {
+              sm:"24px",
+              lg:"84px"
+            },
             color: "#ffffff",
             fontWeight: 600,
             fontFamily: "Montserrat",

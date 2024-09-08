@@ -13,6 +13,8 @@ function ProductCard({ liked, image, title, price, inCart }) {
         borderRadius: "25px",
         padding: "28px 32px",
         // width:"100%"
+        // flexGrow:1,
+        // flexBasis:400
       }}
     >
       <Box
