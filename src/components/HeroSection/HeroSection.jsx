@@ -140,7 +140,7 @@ function HeroSection() {
               sx={{
                 maxWidth: isMobile ? "90%" : "75%",
                 color: "white",
-                fontSize: isMobile ? "18px" : "18px",
+                fontSize: isMobile ? "16px" : "18px",
               }}
             >
               Discover o curated collection ot handcrafted pieces designed to

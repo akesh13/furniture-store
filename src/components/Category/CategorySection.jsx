@@ -64,7 +64,7 @@ function CategorySection() {
         justifyContent: "space-between",
         alignItems: "center",
         marginTop: "48px",
-        gap: isMobile ? "14px" : "32px",
+        gap: isMobile ? "12px" : "32px",
       }}
     >
       {categories.map((category) => (

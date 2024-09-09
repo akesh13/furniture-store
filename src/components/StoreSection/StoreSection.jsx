@@ -117,15 +117,6 @@ function StoreSection() {
             borderRadius: "28px",
           }}
         >
-          <IconButton
-            onClick={handleClose}
-            sx={{
-              position: "absolute",
-              zIndex:1
-            }}
-          >
-            <IoClose />
-          </IconButton>
           {productData &&
             productData?.map((product) => (
               <ProductCard

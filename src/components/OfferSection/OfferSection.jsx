@@ -78,12 +78,12 @@ function OfferSection() {
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: "18px 0px 18px 0px",
+          padding: "18px 14px 18px 18px",
           borderRadius: "28px",
           gap: "18px",
           backgroundColor: "#f5f5f5",
           height: isMobile ? "30dvh" : "40dvh",
-          width: isMobile ? "100%" : "35%",
+          width: isMobile ? "92%" : "35%",
         }}
       >
         <Typography

@@ -34,7 +34,7 @@ function GetReady() {
           alt="chair"
           src={sofa}
           height={isMobile ? 420 : 480}
-          width={isMobile ? 360 : 480}
+          width={isMobile ? 320 : 480}
         />
       </Box>
       <Box
