@@ -3,10 +3,12 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { useScreenSize } from "@/utils/useScreenSize";
 
 gsap.registerPlugin(useGSAP);
 
 export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
+  const { isMobile } = useScreenSize();
   const [hover, setHover] = useState(null);
   const boxRef = useRef();
   let tl = gsap.timeline({ paused: true });
@@ -61,7 +63,7 @@ export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
           overflow: "hidden",
           "&:hover": {
             backgroundColor: bgcolor || "black",
-          }
+          },
         }}
       >
         <Box
@@ -75,7 +77,9 @@ export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
             borderRadius: "100%",
           }}
         ></Box>
-        <Typography sx={{ zIndex: 1 }}>{text}</Typography>{" "}
+        <Typography sx={{ zIndex: 1, fontSize: isMobile && "14px" }}>
+          {text}
+        </Typography>{" "}
         <Typography
           sx={{
             display: "flex",
