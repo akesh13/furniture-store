@@ -1,11 +1,12 @@
-"use client"
+"use client";
 import { useScreenSize } from "@/utils/useScreenSize";
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { BiChair } from "react-icons/bi";
+import { AnimatedButton } from "../ui/AnimatedButton";
 
 function Footer() {
-  const {isMobile} = useScreenSize()
+  const { isMobile } = useScreenSize();
   return (
     <Box
       sx={{
@@ -18,7 +19,7 @@ function Footer() {
         justifyContent: "space-between",
         alignItems: "start",
         padding: "28px 18px",
-        gap: isMobile && "18px"
+        gap: isMobile && "18px",
       }}
     >
       <Box
@@ -37,17 +38,12 @@ function Footer() {
         />
         <Typography>356-A, pleasant, bangalore</Typography>
         <Typography>info@furniturestore.com</Typography>
-        <Button
-          sx={{
-            backgroundColor: "black",
-            color: "white",
-            "&:hover": {
-              color: "black",
-            },
-          }}
-        >
-          Contact us
-        </Button>
+        <AnimatedButton
+          text={"Explore more"}
+          bgcolor={"#ffd873"}
+          innerColor={"#5c75b8"}
+          textColor={"black"}
+        />
       </Box>
       <Box
         sx={{

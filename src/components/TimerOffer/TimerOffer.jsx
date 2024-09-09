@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import sofa from "../../../public/assets/images/sofa.png";
 import { useScreenSize } from "@/utils/useScreenSize";
+import { AnimatedButton } from "../ui/AnimatedButton";
 
 function TimerOffer() {
   const { isMobile } = useScreenSize();
@@ -47,14 +48,12 @@ function TimerOffer() {
         >
           5d : 2h : 30s
         </Typography>
-        <Button
-          sx={{
-            backgroundColor: "white",
-            color: "black",
-          }}
-        >
-          Open page
-        </Button>
+        <AnimatedButton
+          text={"open page"}
+          bgcolor={"white"}
+          innerColor={"#5c75b8"}
+          textColor={"black"}
+        />
       </Box>
       <Image
         src={sofa}

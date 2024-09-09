@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { useScreenSize } from "@/utils/useScreenSize";
+import { AnimatedButton } from "../ui/AnimatedButton";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,13 +103,12 @@ function OfferSection() {
           Check out our duty that can big csscovito on prcxiucts, may champ
           overy day. do not rniso yocr charwo
         </Typography>
-        <Button
-          sx={{
-            backgroundColor: "#ffd873",
-          }}
-        >
-          Open store
-        </Button>
+        <AnimatedButton
+          text={"open store"}
+          bgcolor={"#ffd873"}
+          innerColor={"#5c75b8"}
+          textColor={"black"}
+        />
       </Box>
       <Box
         sx={{
@@ -138,7 +138,7 @@ function OfferSection() {
             sx={{
               fontSize: "32px",
               fontWeight: "800",
-              marginLeft: isMobile && "15px",
+              marginLeft: "15px",
             }}
           >
             Chairs
@@ -153,7 +153,7 @@ function OfferSection() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              marginRight: isMobile && "15px",
+              marginRight: "15px",
             }}
           >
             30%

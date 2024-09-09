@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import chair1 from "../../../public/assets/images/lounge_chair1.png";
 import chair2 from "../../../public/assets/images/lounge_chair_2.png";
 import { useScreenSize } from "@/utils/useScreenSize";
+import { AnimatedButton } from "../ui/AnimatedButton";
 
 gsap.registerPlugin(useGSAP);
 
@@ -147,16 +148,12 @@ function HeroSection() {
               tronstoen yout Wing spaces into expressions ot your unique tasto
               ond lifestyle.
             </Typography>
-            <Button
-              sx={{
-                backgroundColor: "#ffd873",
-                color: "black",
-                padding: "14px 24px",
-                borderRadius: "100px",
-              }}
-            >
-              Explore more
-            </Button>
+            <AnimatedButton
+              text={"Explore more"}
+              bgcolor={"#ffd873"}
+              innerColor={"#5c75b8"}
+              textColor={"black"}
+            />
           </Box>
         </Box>
       </Box>
@@ -217,16 +214,12 @@ function HeroSection() {
             >
               New Designer Sofa Collection
             </Typography>
-            <Button
-              sx={{
-                backgroundColor: "#ffd873",
-                color: "black",
-                padding: "14px 24px",
-                borderRadius: "100px",
-              }}
-            >
-              Explore more
-            </Button>
+            <AnimatedButton
+              text={"Explore more"}
+              bgcolor={"#ffd873"}
+              innerColor={"#5c75b8"}
+              textColor={"black"}
+            />
           </Box>
         </Box>
         <Box
@@ -268,16 +261,12 @@ function HeroSection() {
             >
               Wooden chair <br /> flat 50% OFF
             </Typography>
-            <Button
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                padding: "14px 24px",
-                borderRadius: "100px",
-              }}
-            >
-              Explore more
-            </Button>
+            <AnimatedButton
+              text={"Explore more"}
+              bgcolor={"white"}
+              innerColor={"#5c75b8"}
+              textColor={"black"}
+            />
           </Box>
           <Image
             src={chair2}

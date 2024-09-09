@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import sofa from "../../../public/assets/images/blue-sofa.jpg";
 import { useScreenSize } from "@/utils/useScreenSize";
+import { AnimatedButton } from "../ui/AnimatedButton";
 
 function GetReady() {
   const { isMobile } = useScreenSize();
@@ -41,7 +42,7 @@ function GetReady() {
         sx={{
           width: isMobile ? "100%" : "60%",
           // minHeight: isMobile ? "100dvh" : "400px",
-          gap:"18px",
+          gap: "18px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -73,13 +74,12 @@ function GetReady() {
           <strong>stylish</strong> and inviting living room{" "}
           <strong>furniture.</strong>
         </Typography>
-        <Button
-          sx={{
-            backgroundColor: "#ffd873",
-          }}
-        >
-          Open store
-        </Button>
+        <AnimatedButton
+          text={"open store"}
+          bgcolor={"#ffd873"}
+          innerColor={"#5c75b8"}
+          textColor={"black"}
+        />
       </Box>
     </Box>
   );

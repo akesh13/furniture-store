@@ -7,20 +7,47 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import { productData } from "./productsData";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { useScreenSize } from "@/utils/useScreenSize";
-import { IoClose } from "react-icons/io5";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { AnimatedButton } from "../ui/AnimatedButton";
+
+gsap.registerPlugin(useGSAP);
 
 function StoreSection() {
   const { isMobile } = useScreenSize();
+  const modelRef = useRef();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      modelRef.current,
+      {
+        y: "550px",
+        opacity: 0,
+        scale: 3,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        // rotate: "+=360",
+        scrollTrigger: {
+          trigger: modelRef.current,
+          toggleActions: "restart pause pause pause",
+        },
+      }
+    );
+  });
   return (
     <Box
+      ref={modelRef}
       sx={{
         paddingTop: "48px",
         display: "flex",
@@ -75,15 +102,12 @@ function StoreSection() {
               title={product.title}
             />
           ))}
-        <Button
+        {/* <Button
           onClick={handleOpen}
           sx={{
             backgroundColor: "#ffd873",
             color: "black",
-            position: "absolute",
-            bottom: 14,
-            left: "50%",
-            transform: "translateX(-50%)",
+
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
@@ -91,7 +115,23 @@ function StoreSection() {
           }}
         >
           open store <HiArrowLongRight />
-        </Button>
+        </Button> */}
+        <Box
+          onClick={handleOpen}
+          sx={{
+            position: "absolute",
+            bottom: 14,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <AnimatedButton
+            text={"open store"}
+            bgcolor={"#ffd873"}
+            innerColor={"#5c75b8"}
+            textColor={"black"}
+          />
+        </Box>
       </Box>
       <Modal
         open={open}
