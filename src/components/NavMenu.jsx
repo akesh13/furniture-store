@@ -210,16 +210,16 @@ export default function NavMenu() {
         >
           <PiUserLight style={{ height: "20px", width: "auto" }} />
         </Box>
-        <Box
-          ref={icnRef}
-          sx={{
-            height: "36px",
-            width: "36px",
-            borderRadius: "100%",
-            zIndex: 100,
-          }}
-        ></Box>
       </Grid>
+      <Box
+        ref={icnRef}
+        sx={{
+          height: "36px",
+          width: "36px",
+          borderRadius: "100%",
+          zIndex: 100,
+        }}
+      ></Box>
     </Grid>
   );
 }
