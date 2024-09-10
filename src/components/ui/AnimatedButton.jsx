@@ -12,8 +12,10 @@ export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
   const [hover, setHover] = useState(null);
   const boxRef = useRef();
   let tl = gsap.timeline({ paused: true });
+  let tl2 = gsap.timeline({ paused: true });
   useGSAP(() => {
     hover && tl.play();
+    !hover && tl2.play();
     tl.to(boxRef.current, {
       width: "calc(100% - 10px)",
       right: 4,
@@ -28,14 +30,14 @@ export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
       ease: "Elastic.easeOut(0.25)",
       duration: 0.5,
     });
-    tl.to(boxRef.current, {
+    tl2.to(boxRef.current, {
       width: "calc(100% - 10px)",
       left: 4,
       borderRadius: "18px",
       ease: "Elastic.easeOut(0.25)",
       duration: 0.5,
     });
-    tl.to(boxRef.current, {
+    tl2.to(boxRef.current, {
       width: "2em",
       right: "calc(100% - 2.4rem)",
       borderRadius: "18px",
@@ -48,7 +50,11 @@ export const AnimatedButton = ({ bgcolor, innerColor, textColor, text }) => {
     <>
       <Button
         onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+        onMouseLeave={() =>
+          setTimeout(() => {
+            setHover(false);
+          }, 600)
+        }
         sx={{
           display: "flex",
           justifyContent: "space-between",

@@ -1,7 +1,7 @@
 "use client";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import sofa from "../../../public/assets/images/sofa.png";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";

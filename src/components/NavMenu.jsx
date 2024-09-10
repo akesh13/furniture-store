@@ -9,18 +9,38 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import siteLogo from "../../public/assets/images/armchair.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GoHeart } from "react-icons/go";
 import { PiShoppingCartSimpleLight, PiUserLight } from "react-icons/pi";
 import { HiBars3 } from "react-icons/hi2";
 import { useScreenSize } from "@/utils/useScreenSize";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(useGSAP);
 
 export default function NavMenu() {
   const [active, setActive] = useState("");
-  // const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  let icnRef = useRef(null);
+  useGSAP(() => {
+    gsap.fromTo(
+      icnRef.current,
+      {
+        scale: 100,
+        backgroundColor: "#5c75b8",
+        ease: "back.in",
+        duration: 0.5,
+      },
+      {
+        scale: 0,
+        backgroundColor: "#5c75b8",
+        ease: "power4",
+        duration: 0.5,
+        delay: 0.2,
+      }
+    );
+  }, []);
 
-  const {isMobile} = useScreenSize()
+  const { isMobile } = useScreenSize();
   const menuItems = [
     {
       id: 1,
@@ -62,7 +82,12 @@ export default function NavMenu() {
         >
           <HiBars3 />
         </IconButton>
-        <Image src={siteLogo} alt="site-log0" height={isMobile ? 28 : 48} width={isMobile ? 32 : 52} />
+        <Image
+          src={siteLogo}
+          alt="site-log0"
+          height={isMobile ? 28 : 48}
+          width={isMobile ? 32 : 52}
+        />
         <Typography
           align="left"
           variant="h1"
@@ -185,6 +210,15 @@ export default function NavMenu() {
         >
           <PiUserLight style={{ height: "20px", width: "auto" }} />
         </Box>
+        <Box
+          ref={icnRef}
+          sx={{
+            height: "36px",
+            width: "36px",
+            borderRadius: "100%",
+            zIndex: 100,
+          }}
+        ></Box>
       </Grid>
     </Grid>
   );

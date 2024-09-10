@@ -37,7 +37,7 @@ function StoreSection() {
         opacity: 1,
         y: 0,
         scale: 1,
-        // rotate: "+=360",
+        ease:"back",
         scrollTrigger: {
           trigger: modelRef.current,
           toggleActions: "restart pause pause pause",
