@@ -207,7 +207,7 @@ function HeroSection() {
           >
             <Typography
               sx={{
-                fontSize: isMobile ? "20px" : "50px",
+                fontSize: isMobile ? "20px" : "32px",
                 fontWeight: 800,
                 fontFamily: "Montserrat",
               }}
